@@ -55,8 +55,12 @@ describe('Verify that the "Company information" page functions properly', () => 
       .withContext('"Director Declaration Form" not displayed')
       .toBeDisplayed();
     });
-  //     it('Verify that the user is able to select directors DSC Confirmation', async () => {
-  //   // await registerationPage.directorDeclarationForm(); 
-  // });
+      it('Verify that the Director Declaration Form page functions properly', async () => {
+    await registerationPage.directorDeclarationForm(); 
+    expect(await registerationPage.$addDetailsPageTitle())
+    .withContext('"Add Details Page" not displayed')
+    .toBeDisplayed();
+    await registerationPage.addDetailsPage();
+  });
 });
 });

@@ -35,7 +35,44 @@ class register extends Common {
 
         /** Director Declaration Form */
         this.$DDFheadline = ()=> $('//span[text()=" - Director Declaration Form"]');
-        this.$DDFheadline = ()=> $('//span[text()=" - Director Declaration Form"]');
+        this.$manualRadiobtn1 = () => $('#yesApply0');
+        this.$manualRadioBtn2 = () =>$('#yesApply1');
+        this.$addDetailsButton1 = () => $('(//button[text()="Add Details"])[1]');
+        this.$addDetailsButton2 = () => $('(//button[text()="Add Details"])[2]');
+        this.$DirectorDeclarationFormNextPage = () => $('//button[@type="submit"]');
+
+        /**Add details */
+
+        this.$addDetailsPageTitle = () => $('//span[text()=" - Director Declaration Form"]');
+        this.$DINnumber = () => $('//input[@placeholder="Enter Your DIN"]');
+        this.$fathersName = () => $('//input[@name="fathersName"]');
+        this.$directorDeclarationMail = () => $('Director Declaration Mail');
+        this.$directorMobileNumber = () => $('//input[@type="tel"]');
+        this.$directorPAN = () => $('//input[@name="PAN"]');
+        this.$directorsOccupation = () => $('//input[@name="occupation"]')
+        this.$directorsNationlity = () => $('#nationality');
+        this.$directors
+
+
+
+        /** company information page */
+        this.$pageHeadline = () => $('//div[text()="Company Information"]');
+        this.$descriptionTab = () => $('#objectsEntity');
+        this.$address1 = () => $('#address1');
+        this.$address2 = () => $('address2');
+        this.$pincode1 = () => $('//input[@name="pincode"]');
+        this.$selectCity =()=> $('#city');
+        this.$selectSatate = () => $('//input[@value="KERALA"]');
+        this.compamyEmail = () => $('#emailIdOfCompany');
+        this.$addressRadioButtonNo = () => $('#no');
+        this.$addressRadioButtonYes = () => $('#yes');
+        this.$registeredAddress1 = () => $('#registeredCompanyAddress1');
+        this.$registeredAddress2 = () => $('#registeredCompanyAddress2');
+        this.registerdCompanyPincode = () => $('//input[@name="registeredCompanyPincode"]');
+        this.registeredCompanyCity = () => $('#registeredCompanyCity');
+        this.$registeredCompanyState = () => $('//input[@name="registeredCompanyState"]');
+        this.$companyInfoNextPage = () => $('//button[@type="submit"]');
+
 
     }
 
@@ -44,9 +81,9 @@ class register extends Common {
      */
 
     async registerCompany() {
-        await this.$userAvatar().waitForDisplayed({ timeout: 4000, timeoutMsg: "User avatar is not displayed" })
+        await this.$userAvatar().waitForDisplayed({ timeout: 6000, timeoutMsg: "User avatar is not displayed" })
         await this.$registerComapny().click();
-        await this.$companyRegistration().waitForDisplayed({ timeout: 4000, timeoutMsg: "'Register comapany' page not displayed" })
+        await this.$companyRegistration().waitForDisplayed({ timeout: 6000, timeoutMsg: "'Register comapany' page not displayed" })
     }
 
     /**
@@ -63,7 +100,7 @@ class register extends Common {
         await this.$phoneNumber().click();
         await this.$phoneNumber ().setValue(this.phoneNumber);
         await this.$NextBtn().click();
-        await this.$statusPopUp().waitForDisplayed({ timeout: 4000, timeoutMsg: "'Personal information' popup message not displayed" })
+        await this.$statusPopUp().waitForDisplayed({ timeout: 6000, timeoutMsg: "'Personal information' popup message not displayed" })
     }
 
     /**
@@ -112,7 +149,21 @@ class register extends Common {
         await this.$DSCNextButton().click();
     }
     async directorDeclarationForm() {
-        
+        await this.$DDFheadline().waitForDisplayed({ timeout: 100000, timeoutMsg: "'Director Declaration Form' is not displayed" })
+        await this.$manualRadiobtn1().waitForClickable();
+        await this.$manualRadiobtn1().click();
+        await this.$manualRadioBtn2().waitForClickable();
+        await this.$manualRadioBtn2().click();
+        await this.$addDetailsButton1().waitForClickable();
+        await browser.pause(2000);
+        await this.$addDetailsButton1().click();
+        await this.$addDetailsPageTitle().waitForDisplayed({ timeout: 100000, timeoutMsg: "'Director Declaration Form' is not displayed" })
+
+        // await this.$addDetailsButton2().click();
+    }
+    async addDetailsPage(){
+        await this.$addDetailsButton1().click();
+
     }
 }
 

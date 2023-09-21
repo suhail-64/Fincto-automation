@@ -9,6 +9,11 @@ class Common {
       this.companyName = this.generateRandomCompanyName();
       this.DINnumber = this.generateRandomDINnumber();
       this.randomAlphaNumeric = this.generateRandomAlphaNumericString();
+
+      this.words = ["Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua."];
+      this.randomwords = this.generateRandomParagraph();
+
+      
     }
   
     generateRandomName() {
@@ -53,7 +58,26 @@ class Common {
   
       return result;
     }
-  
+/** random wrods generating */    
+    generateRandomParagraph(charLimit) {
+      let paragraph = "";
+      let currentCharCount = 0;
+      while (currentCharCount < charLimit) {
+        const  words = [Math.floor(Math.random() * words.length)];
+        // const word = getRandomWord();
+        if (currentCharCount + word.length + 1 <= charLimit) {
+          paragraph += word + " ";
+          currentCharCount += word.length + 1;
+        } else {
+          break;
+        }
+      }
+      // Trim any extra space at the end
+      paragraph = paragraph.trim();
+    
+      return paragraph;
+    }
+
     // You can add methods to access the generated values if needed
     getName() {
       return this.name;
@@ -78,7 +102,43 @@ class Common {
     getRandomAlphaNumeric() {
       return this.randomAlphaNumeric;
     }
+    getRandomwords() {
+      return this.randomwords;
+    }
   }
   
   module.exports = Common;
+  
+
+
+
+
+
+  // function getRandomWord() {
+  //   const words = ["Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua."];
+  //   return words[Math.floor(Math.random() * words.length)];
+  // }
+  
+  // function generateRandomParagraph(charLimit) {
+  //   let paragraph = "";
+  //   let currentCharCount = 0;
+  
+  //   while (currentCharCount < charLimit) {
+  //     const word = getRandomWord();
+  //     if (currentCharCount + word.length + 1 <= charLimit) {
+  //       paragraph += word + " ";
+  //       currentCharCount += word.length + 1;
+  //     } else {
+  //       break;
+  //     }
+  //   }
+  
+  //   // Trim any extra space at the end
+  //   paragraph = paragraph.trim();
+  
+  //   return paragraph;
+  // }
+  
+  // const randomParagraph = generateRandomParagraph(201);
+  // console.log(randomParagraph);
   
