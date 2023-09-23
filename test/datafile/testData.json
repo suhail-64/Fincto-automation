@@ -1,8 +1,15 @@
 {
-    "Fincto": "https://dev.fincto.io/",
-    "email": "suhail.p@cybersapient.io",
-    "password": "Secrete@12",
-    "Mobile": "8086346458",
-    "firstName": "Suhail",
-    "lastName": "Parambatt"
+    "userAccess": {
+        "Fincto": "https://dev.fincto.io/",
+        "email": "suhail.p@cybersapient.io",
+        "password": "Secrete@12",
+        "Mobile": "8086346458",
+        "firstName": "Suhail",
+        "lastName": "Parambatt"
+    },
+    "calender": {
+        "Calender month": "June",
+        "Calender day": "19",
+        "Calender year": "2001"
+    }
 }

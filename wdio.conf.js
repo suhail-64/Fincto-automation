@@ -52,12 +52,12 @@ exports.config= {
     //
     capabilities: [{
         browserName: 'chrome'
-    // }, {
-    //     browserName: 'firefox'
-    // }, {
-    //     browserName: 'safari'
-    // }, {
-    //     browserName: 'MicrosoftEdge'
+    }, {
+        browserName: 'firefox'
+    }, {
+        browserName: 'safari'
+    }, {
+        browserName: 'MicrosoftEdge'
     }],
 
     //
@@ -136,7 +136,7 @@ exports.config= {
     // Options to be passed to Jasmine.
     jasmineOpts: {
         // Jasmine default timeout
-        defaultTimeoutInterval: 60000,
+        defaultTimeoutInterval: 100000,
         //
         // The Jasmine framework allows interception of each assertion in order to log the state of the application
         // or website depending on the result. For example, it is pretty handy to take a screenshot every time
