@@ -36,7 +36,7 @@ class Common {
   }
 
   generateRandomDINnumber() {
-    const DINnumber = '8' + Math.random().toString().substring(2, 10);
+    const DINnumber = '2' + Math.random().toString().substring(3, 10);
     return DINnumber;
   }
 

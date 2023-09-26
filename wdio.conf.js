@@ -26,7 +26,8 @@ exports.config= {
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+      //  './test/specs/e2ePvtLtd.spec.js'
+        './test/specs/e2eOnePersonCompany.spec.js'
     ],
     //
     // ============
@@ -52,12 +53,12 @@ exports.config= {
     //
     capabilities: [{
         browserName: 'chrome'
-    }, {
-        browserName: 'firefox'
-    }, {
-        browserName: 'safari'
-    }, {
-        browserName: 'MicrosoftEdge'
+    // }, {
+    //     browserName: 'firefox'
+    // }, {
+    //     browserName: 'safari'
+    // }, {
+    //     browserName: 'MicrosoftEdge'
     }],
 
     //

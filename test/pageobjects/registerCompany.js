@@ -64,7 +64,26 @@ class register extends Common {
         this.$certificateNumber = () => $('//input[@placeholder="Enter Certificate Number"]');
         this.$addDetailsNextPage = () => $('//button[@type="submit"]');
 
-
+/**Adddetails 2 */
+        this.$addDetailsPage2Title = () => $('//th[text()="Director Name"]');
+        this.$DINnumberD2 = () => $('//input[@placeholder="Enter Your DIN"]');
+        this.$fathersNameD2 = () => $('//input[@name="fathersName"]');
+        this.$directorDeclarationMailD2 = () => $('//input[@placeholder="name@yourdomain.com"]');
+        this.$directorMobileNumberD2 = () => $('//input[@type="tel"]');
+        this.$directorPAND2 = () => $('//input[@name="PAN"]');
+        this.$directorsOccupationD2 = () => $('//input[@name="occupation"]');
+        this.$directorsNationlityD2 = () => $('#nationality');
+        this.$calenderBtnD2 = () => $('//input[@placeholder="Date of Birth"]');
+        this.$calenderPageDisplayD2 = () => $('//div[@class="react-datepicker"]');
+        this.$calenderMonthD2 = () => $('//div[@class="react-datepicker__current-month react-datepicker__current-month--hasYearDropdown"]');
+        this.$nextMonthBtnD2 = () => $('//button[@aria-label="Previous Month"]');
+        this.$calenderYearD2 = () => $('//div[@class="react-datepicker__year-read-view"]');
+        this.$selectingYear1997D2 = () => $(`//div[text()="1997"]`); /**check here to make the year dynamic using json file */
+        this.$calenderDayD2 = () => $("//div[@aria-label='Choose Thursday, June 19th, 1997']");
+        this.$addressBtnD2 = () => $('//input[@placeholder="Address"]');
+        this.$mebershipIDD2 = () => $('//input[@placeholder="Enter Membership Number"]');
+        this.$certificateNumberD2 = () => $('//input[@placeholder="Enter Certificate Number"]');
+        this.$addDetailsNextPageD2 = () => $('//button[@type="submit"]');
 
         /** company information page */
         this.$pageHeadline = () => $('//div[text()="Company Information"]');
@@ -184,8 +203,9 @@ class register extends Common {
     /**
      * Click on the Add details button and enter details of the director 1
      */
-    async addDetailsPage(){
-        await browser.pause(2000);
+    async addDetailsPage1(){
+        await this.$DINnumber().waitForClickable();
+        await browser.pause(1000);
         await this.$DINnumber().click();
         await browser.pause(1000);
         await this.$DINnumber().setValue(this.DINnumber);
@@ -201,7 +221,7 @@ class register extends Common {
         await this.$directorMobileNumber().setValue(this.phoneNumber);
         await browser.pause(2000);
         await this.$directorPAN ().click();
-        await this.$directorPAN().setValue(this.randomAlphaNumeric);
+        await this.$directorPAN().setValue("ABCTY1234D");
         await browser.pause(2000);
         await this.$directorsOccupation().click();
         await this.$directorsOccupation().setValue(this.name);
@@ -233,6 +253,65 @@ class register extends Common {
       await this.$certificateNumber().setValue(this.DINnumber);
       await this.$addDetailsNextPage().scrollIntoView();
       await this.$addDetailsNextPage().click();
+      await this.$addDetailsPage2Title().waitForDisplayed({ timeout: 100000, timeoutMsg: "'Director Declaration Form' is not displayed-2" })
+      
+      }
+
+    /**Add details page 2 */
+
+    async addDetailsPage2(){
+        await this.$addDetailsButton2().scrollIntoView();
+        await this.$addDetailsButton2().waitForClickable();
+        await browser.pause(3000);
+        await this.$addDetailsButton2().click();
+        await this.$a$DINnumberD2().waitForClickable();
+        await this.$DINnumberD2().click();
+        await browser.pause(1000);
+        await this.$DINnumberD2().setValue(this.DINnumber) ;
+        await browser.pause(2000);
+        await this.$fathersNameD2().click();
+        await this.$fathersNameD2().setValue(this.name);
+        await browser.pause(2000);
+        await this.$directorDeclarationMailD2().scrollIntoView();
+        await this.$directorDeclarationMailD2().click();
+        await this.$directorDeclarationMailD2().setValue(this.name + "@gmail.com");
+        await browser.pause(2000);
+        await this.$directorMobileNumberD2().click();
+        await this.$directorMobileNumberD2().setValue(this.phoneNumber);
+        await browser.pause(2000);
+        await this.$directorPAND2 ().click();
+        await this.$directorPAND2().setValue("ALCTY1234D");
+        await browser.pause(2000);
+        await this.$directorsOccupationD2().click();
+        await this.$directorsOccupationD2().setValue(this.name);
+        await browser.pause(2000);
+        await this.$directorsNationlityD2().scrollIntoView();
+        await this.$directorsNationlityD2().selectByAttribute('value','India');
+        await browser.pause(2000);
+        await this.$calenderBtnD2().click();
+        await this.$calenderPageDisplayD2().waitForDisplayed({ timeout: 6000, timeoutMsg: "'calender' is not displayed" })
+        for (let i = 0; i < 8; i++) {
+            const displayedMonth = await this.$calenderMonthD2().getText();
+        if (displayedMonth === "June"){
+        isJuneSelected = true;
+        break;
+        }
+        await this.$nextMonthBtnD2().click();
+      }
+      await this.$calenderYearD2().click();
+      await this.$selectingYear1997D2().scrollIntoView();
+      await this.$selectingYear1997D2().click();
+      await this.$calenderDayD2().waitForClickable();
+      await this.$calenderDayD2().click();
+      await this.$addressBtnD2().waitForClickable();
+      await this.$addressBtnD2().click();
+      await this.$addressBtnD2().setValue("my adress is, this can you see that my address");
+      await this.$mebershipIDD2().click();
+      await this.$mebershipIDD2().setValue(this.DINnumber);
+      await this.$certificateNumberD2().click();
+      await this.$certificateNumberD2().setValue(this.DINnumber);
+      await this.$addDetailsNextPageD2().scrollIntoView();
+      await this.$addDetailsNextPageD2().click();
     }
     }
 
